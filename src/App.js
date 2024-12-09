@@ -8,11 +8,12 @@ import SymptomTracking from './pages/SymptomTracking';
 import MedicationAndDiet from './pages/MedicationAndDiet';
 import MedicalQA from './pages/MedicalQA';
 import LoginForm from './pages/LoginForm';
+import AssistantPage from './pages/AssistantPage';
 import MotivationalQuotes from './pages/MotivationalQuotes';
 
 
 const router = createBrowserRouter([
-  { path:"/", element:<LandingPage /> },
+  { path:"/", element:<AssistantPage /> },
   { path:"/newuser", element:<UserRegistration /> },
   { path:"/home", element:<HomePage /> },
   { path:"/symptoms", element:<SymptomTracking /> },
