@@ -4,6 +4,7 @@ import { IoMdSend } from "react-icons/io";
 import { ImSpinner8 } from "react-icons/im";
 import { BsToggleOn, BsToggleOff } from "react-icons/bs";
 import axios from "axios";
+import logo from "../assets/evaCareNet-v2.PNG"
 
 const TextInputComponent = () => {
   const [inputText, setInputText] = useState("");
@@ -81,7 +82,6 @@ const TextInputComponent = () => {
     }
   };
 
-  // Added handler for Enter key press
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSendMessage();
@@ -89,10 +89,10 @@ const TextInputComponent = () => {
   };
 
   const postAgentCall = async (message)=>{
-      const res = await axios('/data', {method:"POST", data: {
-        userid:"user1",
-        message
-      },
+      const res = await axios('http://localhost:8081/api/talk2agent', {method:"POST", data: JSON.stringify({
+        "userid":"user1",
+        "message":message
+      }),
       url:"localhost:8081/api/talk2agent"});
       return await res.json();
   }
@@ -153,6 +153,15 @@ const TextInputComponent = () => {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-white via-gray-100 to-gray-200 bg-opacity-80 relative overflow-hidden">
+      {/* Added Logo */}
+      <div className="absolute top-4 left-4 z-30">
+        <img
+          src={logo}
+          alt="Company Logo"
+          className="w-24 h-24 object-contain mix-blend-multiply rounded-lg shadow-sm opacity-60"
+        />
+      </div>
+
       <div className="absolute top-4 right-4 z-30">
         <button
           onClick={() => setTextToSpeechEnabled(!textToSpeechEnabled)}
